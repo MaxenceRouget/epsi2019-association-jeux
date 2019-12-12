@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="epsi2019-association-jeux:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/epsi2019_association_jeux_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="epsi2019-association-jeux/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="epsi2019-association-jeux" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
