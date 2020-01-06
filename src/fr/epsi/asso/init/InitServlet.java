@@ -2,7 +2,9 @@ package fr.epsi.asso.init;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import fr.epsi.asso.DataAccess;
+import fr.epsi.asso.business.AdherentManager;
 import fr.epsi.asso.business.SeancesManager;
+import fr.epsi.asso.model.Adherent;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import java.io.IOException;
 public class InitServlet extends HttpServlet {
 
     public static final String SEANCE_MANAGER = "SEANCE_MANAGER";
+    public static final String SEANCE_ADHERENT = "SEANCE_ADHERENT";
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -30,6 +33,8 @@ public class InitServlet extends HttpServlet {
 
         DataAccess dataAccess = new DataAccess(dataSource);
         SeancesManager seancesManager = new SeancesManager(dataAccess);
+        AdherentManager adherentManager = new AdherentManager(dataAccess);
         config.getServletContext().setAttribute(SEANCE_MANAGER, seancesManager);
+        config.getServletContext().setAttribute(SEANCE_ADHERENT, adherentManager);
     }
 }

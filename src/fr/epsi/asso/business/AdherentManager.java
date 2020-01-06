@@ -6,18 +6,15 @@ import fr.epsi.asso.model.Seance;
 
 import java.util.List;
 
-public class UserManager {
+public class AdherentManager {
     DataAccess dataAccess;
 
-    public UserManager(DataAccess dataAccess) {
+    public AdherentManager(DataAccess dataAccess) {
         this.dataAccess = dataAccess;
     }
 
-    public List<Adherent> listSeances() {
+    public List<Adherent> list() {
         return dataAccess.listAllAdherent();
     }
 
-    public List<Adherent> listAllAdherent(Adherent adherent) {
-        return dataAccess.listAdherentForSeanceId(seance.getId());
-    }
 }

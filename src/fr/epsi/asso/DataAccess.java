@@ -44,10 +44,34 @@ public class DataAccess {
             pstmt.setString(1, seanceId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
-
-                String adherentId = rs.getString("adherentId");
+                String id = rs.getString("adherentId");
                 String nom = rs.getString("nom");
-                adherents.add(new Adherent(adherentId, nom));
+                String login = rs.getString("login");
+                String mdp = rs.getString("mdp");
+                String jeuId = rs.getString("jeuId");
+                Timestamp startDateTime = rs.getTimestamp("startDateTime");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return adherents;
+    }
+
+    public List<Adherent> listAllAdherent() {
+        List<Adherent> adherents = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM epsi.adherents");
+            while (rs.next()){
+
+                String id = rs.getString("adherentId");
+                String nom = rs.getString("nom");
+                String login = rs.getString("login");
+                String mdp = rs.getString("mdp");
+                String jeuId = rs.getString("jeuId");
+                Timestamp startDateTime = rs.getTimestamp("startDateTime");
+                adherents.add(new Adherent(id,nom,login,mdp,jeuId));
             }
             rs.close();
         } catch (SQLException e) {
