@@ -21,4 +21,5 @@ public class SeancesManager {
     public List<Adherent> listAdherentsForSeance(Seance seance) {
         return dataAccess.listAdherentForSeanceId(seance.getId());
     }
+
 }

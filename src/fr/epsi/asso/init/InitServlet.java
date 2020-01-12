@@ -17,7 +17,7 @@ import java.io.IOException;
 public class InitServlet extends HttpServlet {
 
     public static final String SEANCE_MANAGER = "SEANCE_MANAGER";
-    public static final String SEANCE_ADHERENT = "SEANCE_ADHERENT";
+    public static final String ADHERENT_MANAGER = "ADHERENT_MANAGER";
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -35,6 +35,6 @@ public class InitServlet extends HttpServlet {
         SeancesManager seancesManager = new SeancesManager(dataAccess);
         AdherentManager adherentManager = new AdherentManager(dataAccess);
         config.getServletContext().setAttribute(SEANCE_MANAGER, seancesManager);
-        config.getServletContext().setAttribute(SEANCE_ADHERENT, adherentManager);
+        config.getServletContext().setAttribute(ADHERENT_MANAGER, adherentManager);
     }
 }

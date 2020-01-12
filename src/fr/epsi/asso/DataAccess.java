@@ -1,6 +1,7 @@
 package fr.epsi.asso;
 
 import fr.epsi.asso.model.Adherent;
+import fr.epsi.asso.model.Inscription;
 import fr.epsi.asso.model.Seance;
 
 import javax.sql.DataSource;
@@ -40,16 +41,15 @@ public class DataAccess {
         List<Adherent> adherents = new ArrayList<>();
         String sql = "select a.nom, a.adherentId from adherents a left join inscriptions i on a.adherentId = i.adherentId where i.seanceId = ?;";
         try (Connection connection = dataSource.getConnection();PreparedStatement pstmt = connection.prepareStatement(sql);) {
-
             pstmt.setString(1, seanceId);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
-                String id = rs.getString("adherentId");
+          /*      String id = rs.getString("adherentId");
                 String nom = rs.getString("nom");
-                String login = rs.getString("login");
-                String mdp = rs.getString("mdp");
+                //String login = rs.getString("login");
+                //String mdp = rs.getString("mdp");
                 String jeuId = rs.getString("jeuId");
-                Timestamp startDateTime = rs.getTimestamp("startDateTime");
+                Timestamp startDateTime = rs.getTimestamp("startDateTime");*/
             }
             rs.close();
         } catch (SQLException e) {
@@ -61,16 +61,13 @@ public class DataAccess {
     public List<Adherent> listAllAdherent() {
         List<Adherent> adherents = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
-
             ResultSet rs = stmt.executeQuery("SELECT * FROM epsi.adherents");
             while (rs.next()){
-
                 String id = rs.getString("adherentId");
                 String nom = rs.getString("nom");
                 String login = rs.getString("login");
                 String mdp = rs.getString("mdp");
                 String jeuId = rs.getString("jeuId");
-                Timestamp startDateTime = rs.getTimestamp("startDateTime");
                 adherents.add(new Adherent(id,nom,login,mdp,jeuId));
             }
             rs.close();
@@ -78,5 +75,23 @@ public class DataAccess {
             e.printStackTrace();
         }
         return adherents;
+    }
+
+    public List<Inscription> listAllInscription(){
+        List<Inscription> inscriptions = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM epsi.inscriptions");
+            while (rs.next()){
+                String id = rs.getString("inscriptionId");
+                String seanceId = rs.getString("seanceId");
+                String adherentId = rs.getString("adherentId");
+                Inscription i = new Inscription(id,seanceId,adherentId);
+                inscriptions.add(i);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return inscriptions;
     }
 }
