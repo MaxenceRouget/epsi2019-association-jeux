@@ -22,6 +22,7 @@ CREATE TABLE jeu (
      nom VARCHAR(128) NOT NULL,
      login VARCHAR(40) NOT NULL,
      mdp VARCHAR(50) NOT NULL,
+     admin tinyint(1),
      jeuId VARCHAR(50) NULL,
      PRIMARY KEY (adherentId));
  

@@ -6,8 +6,11 @@ import fr.epsi.asso.model.Seance;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class DataAccess {
 
@@ -93,5 +96,20 @@ public class DataAccess {
             e.printStackTrace();
         }
         return inscriptions;
+    }
+
+    public boolean AddNewSeance(String date, String heure){
+        boolean ret = false;
+        UUID guid = UUID.randomUUID();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            LocalDateTime dateTime = LocalDateTime.parse(date+" "+heure, formatter);
+            int exec = stmt.executeUpdate("INSERT INTO seances VALUE ('"+guid.toString()+"','"+dateTime+"'");
+            ret = exec > 0 ? true : false;
+            return ret;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
 }
