@@ -3,6 +3,7 @@ USE epsi;
 CREATE TABLE seances (
  seanceId VARCHAR(40) NOT NULL,
  startDateTime DATETIME NOT NULL,
+ name VARCHAR(100) NOT NULL,
  PRIMARY KEY (seanceId));
 
 CREATE TABLE jeu (

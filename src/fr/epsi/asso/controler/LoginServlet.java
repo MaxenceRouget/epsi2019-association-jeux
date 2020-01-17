@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
                 for (Adherent u:adherents) {
                     if(u.getLogin().equals(userName) && u.getMdp().equals(mdp)){
                         session.setAttribute("User",u);
+                        session.setAttribute("Auth", true);
                         isAuthentificate = true;
                     }
                 }
@@ -38,7 +39,9 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("/listeSeances").forward(request,response);
             }
             else{
-                request.getRequestDispatcher("/login").forward(request,response);
+                String error = "<div class=\"alert alert-danger\" role=\"alert\"> Vous n'êtes pas connecté :/</div>";
+                request.setAttribute("error",error);
+                request.getRequestDispatcher("/index.jsp").forward(request,response);
             }
     }
 

@@ -7,13 +7,17 @@ public class Adherent {
     private String login;
     private String mdp;
     private String jeu;
+    private boolean admin;
 
-    public Adherent(String adherentId, String nom, String login, String mdp, String jeu) {
+    public Adherent() {
+    } //Empty
+    public Adherent(String adherentId, String nom, String login, String mdp, String jeu, boolean admin) {
         this.adherentId = adherentId;
         this.nom = nom;
         this.login = login;
         this.mdp = mdp;
         this.jeu = jeu;
+        this.admin = admin;
     }
 
     public String getLogin() {
@@ -39,5 +43,17 @@ public class Adherent {
     }
     public String getNom() {
         return nom;
+    }
+    public void setAdherentId(String adherentId) {
+        this.adherentId = adherentId;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public boolean isAdmin() {
+        return admin;
+    }
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

@@ -1,27 +1,24 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: PRFJ847
-  Date: 10/12/2019
-  Time: 11:20
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Liste des séances</title>
-</head>
-<body>
-<ul>
- <c:forEach items="${requestScope.seances}" var="seance">
-
-     <li>Séance du <c:out value="${seance.startDateTimeAsString}"/></li>
-     <ul>
-     <c:forEach items="${seance.inscrits}" var="adherent">
-         <li><c:out value="${adherent.nom}"/></li>
-     </c:forEach>
-     </ul>
- </c:forEach>
-</ul>
+<%@ page import="fr.epsi.asso.model.Seance" %>
+<%@ page import="java.util.List" %>
+<%@include file="header.jsp"%>
+<br>
+<div class="row">
+<%
+List<Seance> seances = (List<Seance>) request.getAttribute("seances");
+    for(Seance s : seances){ %>
+            <div class="col-sm-6">
+                <div class="d-flex justify-content-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=s.getName()%></h5>
+                            <p class="card-text">L'&eacute;v&egrave;enement commence &agrave; : <%=s.getStartDateTimeAsString()%></p>
+                            <a href="#" class="btn btn-primary">Allons voir !</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<%}
+%>
+</div>
 </body>
 </html>

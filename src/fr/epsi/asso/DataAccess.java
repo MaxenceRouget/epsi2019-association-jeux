@@ -29,8 +29,9 @@ public class DataAccess {
             while (rs.next()){
 
                 String id = rs.getString("seanceId");
+                String name = rs.getString("name");
                 Timestamp startDateTime = rs.getTimestamp("startDateTime");
-                seances.add(new Seance(id, startDateTime.toLocalDateTime()));
+                seances.add(new Seance(id, startDateTime.toLocalDateTime(),name));
             }
             rs.close();
         } catch (SQLException e) {
@@ -71,7 +72,9 @@ public class DataAccess {
                 String login = rs.getString("login");
                 String mdp = rs.getString("mdp");
                 String jeuId = rs.getString("jeuId");
-                adherents.add(new Adherent(id,nom,login,mdp,jeuId));
+                String admin = rs.getString("admin");
+                boolean isAdmin = admin.equals("1")? true : false;
+                adherents.add(new Adherent(id,nom,login,mdp,jeuId,isAdmin));
             }
             rs.close();
         } catch (SQLException e) {

@@ -1,7 +1,7 @@
 USE epsi;
 
-INSERT INTO seances (seanceId,startDateTime) VALUES ('be961c7e-c44d-41c4-b4a8-8adeb0d0ea91','2019-12-04 21:30:00');
-INSERT INTO seances (seanceId,startDateTime) VALUES ('86ab6a47-5274-4411-b467-30adde333e12','2019-11-30 20:00:00');
+INSERT INTO seances (seanceId,startDateTime,name) VALUES ('be961c7e-c44d-41c4-b4a8-8adeb0d0ea91','2019-12-04 21:30:00','Magic Night');
+INSERT INTO seances (seanceId,startDateTime,name) VALUES ('86ab6a47-5274-4411-b467-30adde333e12','2019-11-30 20:00:00','Monopoly');
 
 INSERT INTO jeu (jeuId, nom) VALUE ('9af55fa9-c12f-4546-a6b0-8fa53e2c730e','Magic');
 

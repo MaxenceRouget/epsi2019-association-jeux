@@ -18,7 +18,6 @@
                 <label for="login">Login : <br/></label>
                 <input type="login" id="login" name="login" class="form-control" placeholder="login" required autofocus>
               </div>
-
               <div class="form-label-group">
                 <label for="password">Password : <br/> </label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
