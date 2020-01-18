@@ -21,5 +21,11 @@ public class SeancesManager {
     public List<Adherent> listAdherentsForSeance(Seance seance) {
         return dataAccess.listAdherentForSeanceId(seance.getId());
     }
+    public boolean addSeance(String date, String time, String name){
+        return dataAccess.AddNewSeance(date,time,name);
+    }
 
+    public Seance getSeance(String seanceId) {
+        return dataAccess.GetSeanceById(seanceId);
+    }
 }

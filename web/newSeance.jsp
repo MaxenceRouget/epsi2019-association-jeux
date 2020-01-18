@@ -28,16 +28,19 @@
 
 <div class="container">
     <p>
-        Entrez un jour et une heure pour votre s&eacute;ance :
+        Entrez un jour et une heure pour votre s&eacute;ance :<br/>
+        Et un nom !
     </p>
-    <form action="newSeance" method="post">
+    <form action="addSeance" method="post">
         <div class="form-row">
-            <div class="col-5">
-                <%--<% out.println(dateNow);%>--%>
-                <input id="date" type="date" class="form-control" placeholder="Entrez une date" min="<%=date%>" max="<%=datePlus1%>">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Entrez un nom">
             </div>
             <div class="col-5">
-                 <input id="time" type="time" class="form-control" placeholder="State" min="09:30" max="20:30">
+                <input name="date" type="date" class="form-control" placeholder="Entrez une date" min="<%=date%>" max="<%=datePlus1%>">
+            </div>
+            <div class="col-5">
+                 <input name="time" type="time" class="form-control" placeholder="State" min="09:30" max="20:30">
             </div>
         </div>
         <br>

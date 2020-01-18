@@ -18,8 +18,6 @@ services:
       # Opens port 3306 on the container
       - '3306'
       # Where our data will be persisted
-    volumes:
-      - ./sql-scripts/:/docker-entrypoint-initdb.d
       # - my-db:/var/lib/mysql
 # Names our volume
 # volumes:

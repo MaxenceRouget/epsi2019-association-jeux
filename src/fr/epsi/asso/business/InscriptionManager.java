@@ -4,6 +4,7 @@ import fr.epsi.asso.DataAccess;
 import fr.epsi.asso.model.Adherent;
 import fr.epsi.asso.model.Inscription;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InscriptionManager {
@@ -15,5 +16,13 @@ public class InscriptionManager {
 
     public List<Inscription> list() {
         return dataAccess.listAllInscription();
+    }
+    public boolean insert(String adherentId, String seanceId){
+        return dataAccess.addNewInscription(adherentId,seanceId);
+    }
+    public List<Inscription> getById(String adherentId){
+        List<Inscription> list = new ArrayList<>();
+        list = dataAccess.getInscriptionById(adherentId);
+        return list;
     }
 }

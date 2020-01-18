@@ -20,12 +20,16 @@
                     <a class="nav-link" href="listeSeances">Les s&eacute;ances</a>
                 </li>
             </ul>
-            <%if((boolean)session.getAttribute("Auth")){
-                out.println("            <ul class=\"navbar-nav mr-auto\">\n" +
-                        "                <li class=\"nav-item\">\n" +
-                        "                    <a class=\"nav-link\" href=\"detail\">Mon profil</a>\n" +
-                        "                </li>\n" +
-                        "            </ul>");}%>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="newSeance.jsp">Ajouter une s&eacute;ance</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="mySeances">Mes s&eacute;ances</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
