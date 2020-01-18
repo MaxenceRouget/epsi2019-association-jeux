@@ -19,5 +19,5 @@
 </div>
 <%}%>
 </div>
-</body>
-</html>
+<%@include file="footer.jsp"%>
+

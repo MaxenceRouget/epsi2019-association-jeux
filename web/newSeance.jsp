@@ -53,6 +53,5 @@
         Vous n'&ecirc;tes pas administrateur !
     </div>
     <%}%>
-</body>
-</html>
+<%@include file="footer.jsp"%>
 

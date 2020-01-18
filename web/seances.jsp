@@ -20,11 +20,15 @@
                                     <input name="id"type="hidden" value="<%=s.getId()%>">
                                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">s'inscrire</button>
                                 </form>
+                                <form action="details" method="post">
+                                    <input name="id"type="hidden" value="<%=s.getId()%>">
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Details :)</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
     <%}%>
 </div>
-</body>
-</html>
+<%@include file="footer.jsp"%>
+

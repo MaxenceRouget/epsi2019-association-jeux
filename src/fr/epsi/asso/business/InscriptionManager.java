@@ -25,4 +25,8 @@ public class InscriptionManager {
         list = dataAccess.getInscriptionById(adherentId);
         return list;
     }
+
+    public List<String> getAllAdherent(String seanceId) {
+        return dataAccess.ListAdherentForSeance(seanceId);
+    }
 }

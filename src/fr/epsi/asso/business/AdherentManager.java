@@ -17,4 +17,7 @@ public class AdherentManager {
         return dataAccess.listAllAdherent();
     }
 
+    public Adherent get(String id){
+       return dataAccess.GetAdherent(id);
+    }
 }

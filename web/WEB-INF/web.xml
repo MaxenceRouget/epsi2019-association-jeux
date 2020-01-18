@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
     <servlet>
         <servlet-name>ListerSeanceServlet</servlet-name>
         <servlet-class>fr.epsi.asso.controler.ListerSeanceServlet</servlet-class>
@@ -64,5 +65,23 @@
     <servlet-mapping>
         <servlet-name>MySeances</servlet-name>
         <url-pattern>/mySeances</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SeanceDetail</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.SeanceDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SeanceDetail</servlet-name>
+        <url-pattern>/details</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Deconnexion</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.DeconnexionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deconnexion</servlet-name>
+        <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -49,7 +49,6 @@ public class DataAccess {
     }
 
     public List<Adherent> listAdherentForSeanceId(String seanceId) {
-
         List<Adherent> adherents = new ArrayList<>();
         String sql = "select a.nom, a.adherentId from adherents a left join inscriptions i on a.adherentId = i.adherentId where i.seanceId = ?;";
         try (Connection connection = dataSource.getConnection();PreparedStatement pstmt = connection.prepareStatement(sql);) {
@@ -194,5 +193,38 @@ public class DataAccess {
         }
 
         return new Seance();
+    }
+
+    public List<String> ListAdherentForSeance(String seanceId) {
+        List<String > list = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            ResultSet rs = stmt.executeQuery("SELECT adherentId FROM epsi.inscriptions where seanceId = '"+seanceId+"'");
+            while (rs.next()){
+                String id = rs.getString("adherentId");
+                list.add(id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public Adherent GetAdherent(String adherentId){
+        Adherent a = new Adherent();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM epsi.adherents where adherentId = '"+adherentId+"'");
+            while (rs.next()){
+                a.setAdherentId(rs.getString("adherentId"));
+                a.setNom(rs.getString("nom"));
+                a.setLogin(rs.getString("login"));
+                a.setMdp(rs.getString("mdp"));
+                a.setAdmin( rs.getBoolean("admin"));
+                a.setJeu(rs.getString("jeuId"));
+                return a;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return a;
     }
 }
