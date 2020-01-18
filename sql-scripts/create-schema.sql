@@ -27,5 +27,6 @@ CREATE TABLE jeu (
      mdp VARCHAR(50) NOT NULL,
      admin tinyint(1),
      jeuId VARCHAR(50) NULL,
+     alreadyConnected tinyint(1) not null DEFAULT 0,
      PRIMARY KEY (adherentId));
  

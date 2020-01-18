@@ -20,4 +20,7 @@ public class AdherentManager {
     public Adherent get(String id){
        return dataAccess.GetAdherent(id);
     }
+    public boolean modifyMdp(String id, String mdp){
+        return dataAccess.modifyMdp(id,mdp);
+    }
 }

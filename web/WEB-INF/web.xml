@@ -84,4 +84,13 @@
         <servlet-name>Deconnexion</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Mdp</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.MotDePassServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Mdp</servlet-name>
+        <url-pattern>/changeMdp</url-pattern>
+    </servlet-mapping>
 </web-app>

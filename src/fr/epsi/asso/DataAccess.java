@@ -81,7 +81,8 @@ public class DataAccess {
                 String jeuId = rs.getString("jeuId");
                 String admin = rs.getString("admin");
                 boolean isAdmin = admin.equals("1")? true : false;
-                adherents.add(new Adherent(id,nom,login,mdp,jeuId,isAdmin));
+                boolean alrad = rs.getString("alreadyConnected").equals("1") ?true:false;
+                adherents.add(new Adherent(id,nom,login,mdp,jeuId,isAdmin,alrad));
             }
             rs.close();
         } catch (SQLException e) {
@@ -226,5 +227,23 @@ public class DataAccess {
             e.printStackTrace();
         }
         return a;
+    }
+
+    public boolean modifyMdp(String id, String mdp) {
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            PreparedStatement ps = connection.prepareStatement(
+                    "UPDATE adherents SET mdp = ?, alreadyConnected= ? WHERE adherentId = ? ");
+            // create the mysql insert preparedstatement
+            ps.setString(1,mdp);
+            ps.setBoolean(2,true);
+            ps.setString(3,id);
+
+            int test = ps.executeUpdate();
+            ps.close();
+            return test == 1 ? true : false ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

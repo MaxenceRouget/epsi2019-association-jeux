@@ -8,6 +8,7 @@ public class Adherent {
     private String mdp;
     private String jeu;
     private boolean admin;
+    private boolean alreadyConnected;
 
     public Adherent() {
     } //Empty
@@ -18,6 +19,16 @@ public class Adherent {
         this.mdp = mdp;
         this.jeu = jeu;
         this.admin = admin;
+    }
+
+    public Adherent(String adherentId, String nom, String login, String mdp, String jeu, boolean admin, boolean alreadyConnected) {
+        this.adherentId = adherentId;
+        this.nom = nom;
+        this.login = login;
+        this.mdp = mdp;
+        this.jeu = jeu;
+        this.admin = admin;
+        this.alreadyConnected = alreadyConnected;
     }
 
     public String getLogin() {
@@ -55,5 +66,11 @@ public class Adherent {
     }
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+    public boolean isAlreadyConnected() {
+        return alreadyConnected;
+    }
+    public void setAlreadyConnected(boolean alreadyConnected) {
+        this.alreadyConnected = alreadyConnected;
     }
 }

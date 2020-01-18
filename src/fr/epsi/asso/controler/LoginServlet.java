@@ -29,9 +29,14 @@ public class LoginServlet extends HttpServlet {
             if(adherents != null){
                 for (Adherent u:adherents) {
                     if(u.getLogin().equals(userName) && u.getMdp().equals(mdp)){
-                        session.setAttribute("User",u);
-                        session.setAttribute("Auth", true);
-                        isAuthentificate = true;
+                        if(!u.isAlreadyConnected()){
+                            session.setAttribute("UserId",u.getAdherentId());
+                            request.getRequestDispatcher("/UpdateMdp.jsp").forward(request,response);
+                        }else{
+                            session.setAttribute("User",u);
+                            session.setAttribute("Auth", true);
+                            isAuthentificate = true;
+                        }
                     }
                 }
             }
