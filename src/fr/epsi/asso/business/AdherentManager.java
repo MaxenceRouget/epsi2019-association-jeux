@@ -23,4 +23,8 @@ public class AdherentManager {
     public boolean modifyMdp(String id, String mdp){
         return dataAccess.modifyMdp(id,mdp);
     }
+
+    public boolean newAdherent(String name, String login, String mdp, boolean isAdmin) {
+        return dataAccess.newAdherent(name,login,mdp,isAdmin);
+    }
 }

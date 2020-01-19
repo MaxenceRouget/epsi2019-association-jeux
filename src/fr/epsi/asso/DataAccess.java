@@ -246,4 +246,28 @@ public class DataAccess {
         }
         return false;
     }
+
+    public boolean newAdherent(String name, String login, String mdp, boolean isAdmin) {
+        UUID guid = UUID.randomUUID();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            String query = " insert into adherents (adherentId, nom, login, mdp, admin, alreadyConnected)"
+                    + " values (?,?,?,?,?,?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, guid.toString());
+            preparedStmt.setString(2,name);
+            preparedStmt.setString(3,login);
+            preparedStmt.setString(4,mdp);
+            preparedStmt.setBoolean(5,isAdmin);
+            preparedStmt.setBoolean(6,false);
+
+            boolean isOk = preparedStmt.execute();
+            connection.close();
+            return isOk == false ? true : false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

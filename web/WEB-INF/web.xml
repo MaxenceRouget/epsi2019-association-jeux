@@ -93,4 +93,13 @@
         <servlet-name>Mdp</servlet-name>
         <url-pattern>/changeMdp</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddAdherent</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.AddAdherentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddAdherent</servlet-name>
+        <url-pattern>/newadherent</url-pattern>
+    </servlet-mapping>
 </web-app>
