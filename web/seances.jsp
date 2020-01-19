@@ -1,12 +1,14 @@
 <%@ page import="fr.epsi.asso.model.Seance" %>
 <%@ page import="java.util.List" %>
 <%@include file="header.jsp"%>
-<br>
-<div class="row">
 <%
     if(request.getAttribute("error") != null){
         out.println(request.getAttribute("error"));
     }
+%>
+<br>
+<div class="row">
+<%
     List<Seance> seances = (List<Seance>) request.getAttribute("seances");
         for(Seance s : seances){ %>
                 <div class="col-sm-6">

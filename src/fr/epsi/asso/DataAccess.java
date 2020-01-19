@@ -2,6 +2,7 @@ package fr.epsi.asso;
 
 import fr.epsi.asso.model.Adherent;
 import fr.epsi.asso.model.Inscription;
+import fr.epsi.asso.model.Jeu;
 import fr.epsi.asso.model.Seance;
 
 import javax.sql.DataSource;
@@ -269,5 +270,29 @@ public class DataAccess {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<Jeu> getMyGameList(String adherentId) {
+        List<String> myGamesId = new ArrayList<>();
+        List<Jeu> list = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            ResultSet rs = stmt.executeQuery("SELECT jeuId FROM mesjeux WHERE adherentId = '"+adherentId+"'");
+            while (rs.next()){
+                var JeuId = rs.getString("jeuId");
+                myGamesId.add(JeuId);
+            }
+
+            for (String id: myGamesId) {
+                ResultSet mesJeux = stmt.executeQuery("SELECT * FROM jeu WHERE jeuId = '"+id+"'");
+                while (mesJeux.next()){
+                    Jeu jeu = new Jeu(mesJeux.getString("jeuId"), mesJeux.getString("nom"));
+                    list.add(jeu);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

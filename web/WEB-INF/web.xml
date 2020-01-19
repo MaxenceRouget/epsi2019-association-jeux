@@ -102,4 +102,13 @@
         <servlet-name>AddAdherent</servlet-name>
         <url-pattern>/newadherent</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyGames</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.ListMyGameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyGames</servlet-name>
+        <url-pattern>/mygames</url-pattern>
+    </servlet-mapping>
 </web-app>

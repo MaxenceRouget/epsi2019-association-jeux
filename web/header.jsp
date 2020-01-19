@@ -31,6 +31,11 @@
                     <a class="nav-link" href="AddAdherent.jsp">Ajouter un Adh&eacute;rent</a>
                 </li>
             </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="mygames">Mes jeux</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>

@@ -29,4 +29,10 @@ CREATE TABLE jeu (
      jeuId VARCHAR(50) NULL,
      alreadyConnected tinyint(1) not null DEFAULT 0,
      PRIMARY KEY (adherentId));
- 
+
+CREATE TABLE mesjeux(
+    mesjeuxId   VARCHAR(50) not null ,
+    adherentId VARCHAR(40) not null,
+    jeuId  VARCHAR(50) not null,
+    PRIMARY KEY (mesjeuxId)
+);
