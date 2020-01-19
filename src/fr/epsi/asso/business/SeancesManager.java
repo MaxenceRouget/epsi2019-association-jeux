@@ -28,4 +28,8 @@ public class SeancesManager {
     public Seance getSeance(String seanceId) {
         return dataAccess.GetSeanceById(seanceId);
     }
+
+    public boolean removeSeance(String seanceId) {
+        return dataAccess.removeSeance(seanceId);
+    }
 }

@@ -111,4 +111,49 @@
         <servlet-name>MyGames</servlet-name>
         <url-pattern>/mygames</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>RemoveGame</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.RemoveGamesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveGame</servlet-name>
+        <url-pattern>/remove</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowGame</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.AddGameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowGame</servlet-name>
+        <url-pattern>/showGame</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddJeuToMyGames</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.AddJeuToMyGamesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddJeuToMyGames</servlet-name>
+        <url-pattern>/addjeutomygames</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>removeInscription</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.RemoveInscriptionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>removeInscription</servlet-name>
+        <url-pattern>/removeInscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RemoveSeance</servlet-name>
+        <servlet-class>fr.epsi.asso.controler.RemoveSeanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveSeance</servlet-name>
+        <url-pattern>/removeSeance</url-pattern>
+    </servlet-mapping>
 </web-app>

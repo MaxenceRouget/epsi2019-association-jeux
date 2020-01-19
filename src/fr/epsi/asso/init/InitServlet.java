@@ -2,10 +2,7 @@ package fr.epsi.asso.init;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import fr.epsi.asso.DataAccess;
-import fr.epsi.asso.business.AdherentManager;
-import fr.epsi.asso.business.InscriptionManager;
-import fr.epsi.asso.business.MesJeuxManager;
-import fr.epsi.asso.business.SeancesManager;
+import fr.epsi.asso.business.*;
 import fr.epsi.asso.model.Adherent;
 import fr.epsi.asso.model.Inscription;
 
@@ -24,6 +21,7 @@ public class InitServlet extends HttpServlet {
     public static final String ADHERENT_MANAGER = "ADHERENT_MANAGER";
     public static final String INSCRIPTION_MANANGER = "INSCRIPTION_MANAGER";
     public static final String MESJEUX_MANAGER = "MESJEUX_MANAGER";
+    public static final String JEU_MANAGER = "JEU_MANAGER";
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -42,11 +40,13 @@ public class InitServlet extends HttpServlet {
         InscriptionManager inscriptionManager = new InscriptionManager(dataAccess);
         AdherentManager adherentManager = new AdherentManager(dataAccess);
         MesJeuxManager mesJeuxManager = new MesJeuxManager(dataAccess);
+        JeuManager jeuManager = new JeuManager(dataAccess);
 
         config.getServletContext().setAttribute(SEANCE_MANAGER, seancesManager);
         config.getServletContext().setAttribute(ADHERENT_MANAGER, adherentManager);
         config.getServletContext().setAttribute(INSCRIPTION_MANANGER,inscriptionManager);
         config.getServletContext().setAttribute(MESJEUX_MANAGER, mesJeuxManager);
+        config.getServletContext().setAttribute(JEU_MANAGER, jeuManager);
 
     }
 }

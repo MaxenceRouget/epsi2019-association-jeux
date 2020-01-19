@@ -4,6 +4,7 @@
 <%@include file="header.jsp"%>
 
 <%
+    Adherent current = (Adherent)session.getAttribute("User");
     Seance s = (Seance) request.getAttribute("SeanceForSeance");
 %>
 <div class="jumbotron">
@@ -20,4 +21,13 @@
             </p>
     <%}%>
 </div>
+
+<%
+    if(current.isAdmin()){%>
+    <form action="removeSeance" method="post">
+    <input type="hidden" value="<%=s.getId()%>" name="removeSeanceId">
+    &emsp;<button class="btn btn-danger" type="submit"> Supprimer</button>
+<%}
+%>
+
 <%@include file="footer.jsp"%>

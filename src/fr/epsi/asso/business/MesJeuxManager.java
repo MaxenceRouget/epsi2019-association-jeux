@@ -14,4 +14,12 @@ public class MesJeuxManager {
     public List<Jeu> GetMyMist(String adherentId){
         return dataAccess.getMyGameList(adherentId);
     }
+
+    public boolean remove(String gameId, String adherentId) {
+        return dataAccess.remove(gameId, adherentId);
+    }
+
+    public boolean addToList(String adherentId, String jeuId) {
+        return  dataAccess.addToList(adherentId,jeuId);
+    }
 }

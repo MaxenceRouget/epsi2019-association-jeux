@@ -295,4 +295,84 @@ public class DataAccess {
         }
         return list;
     }
+
+    public boolean remove(String gameId, String adherentId) {
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            String query = "DELETE FROM mesjeux where jeuId = ? AND adherentId = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1,gameId);
+            preparedStmt.setString(2,adherentId);
+            var isOk = preparedStmt.execute() == false ? true : false;
+            connection.close();
+            return isOk;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public List<Jeu> GetAllGames(){
+        List<Jeu> jeu = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            ResultSet rs = stmt.executeQuery("SELECT * FROM epsi.jeu");
+            while (rs.next()){
+                String id = rs.getString("jeuId");
+                String nom = rs.getString("nom");
+                jeu.add(new Jeu(id,nom));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return jeu;
+    }
+
+    public boolean addToList(String adherentId, String jeuId) {
+        UUID guid = UUID.randomUUID();
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            String query = " insert into mesjeux (mesjeuxId, adherentId, jeuId)"
+                    + " values (?,?,?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, guid.toString());
+            preparedStmt.setString(2,adherentId);
+            preparedStmt.setString(3,jeuId);
+            boolean isOk = preparedStmt.execute();
+            connection.close();
+            return isOk == false ? true : false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean removeInscription(String seanceId, String adherentId) {
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            String query = "DELETE FROM inscriptions where seanceId = ? AND adherentId = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1,seanceId);
+            preparedStmt.setString(2,adherentId);
+            var isOk = preparedStmt.execute() == false ? true : false;
+            connection.close();
+            return isOk;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean removeSeance(String seanceId) {
+        try (Connection connection = dataSource.getConnection();Statement stmt = connection.createStatement();) {
+            String query = "DELETE FROM seances where seanceId = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1,seanceId);
+            var isOk = preparedStmt.execute() == false ? true : false;
+            connection.close();
+            return isOk;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

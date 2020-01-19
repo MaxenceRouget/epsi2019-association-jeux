@@ -29,4 +29,8 @@ public class InscriptionManager {
     public List<String> getAllAdherent(String seanceId) {
         return dataAccess.ListAdherentForSeance(seanceId);
     }
+
+    public boolean removeInscription(String seanceId, String adherentId) {
+        return dataAccess.removeInscription(seanceId, adherentId);
+    }
 }
